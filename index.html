@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="only light">
+  <meta name="theme-color" content="#FFFBF0">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://abhiman-sakilam.github.io/cv-portfolio/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Abhiman Sakilam · AI Deep Learning Engineer">
+  <meta property="og:description" content="AI deep learning engineer building production computer vision for industrial safety: VLM fine-tuning, real-time detection and edge deployment.">
+  <meta property="og:url" content="https://abhiman-sakilam.github.io/cv-portfolio/">
+  <meta property="og:image" content="https://abhiman-sakilam.github.io/cv-portfolio/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+    body { margin: 0; }
+    img { max-width: 100%; }
+    [hidden] { display: none !important; }
+  </style>
+<title>Abhiman Sakilam</title>
+<meta name="description" content="AI deep learning engineer building production computer vision for industrial safety: VLM fine-tuning, real-time detection and edge deployment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: Moris-style editorial page. Cream ground, heavy ink blocks, two-column splits, full-bleed ink bands. Single committed theme. */
+:root {
+  --cream: #FFFBF0;
+  --ink: #1C1A1A;
+  --ink-soft: #33302E;
+  --stone: #6B645B;
+  --rule: #E4DCCB;
+  --cream-dim: #BDB6A8;
+  --cursor: #FFFFFF;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: only light;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--cream); scroll-behavior: smooth; scroll-padding-top: 96px; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--cream);
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.band-dark :focus-visible, .menu :focus-visible, .card :focus-visible { outline-color: var(--cream); }
+
+.gut {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap {
+  max-width: 1300px;
+  margin-inline: auto;
+  padding-inline: clamp(0px, calc(4vw - 16px), 40px);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: clamp(12px, 1.1vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Header */
+.site-head {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--cream);
+}
+.head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: clamp(14px, 2vw, 26px);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+.brand svg { height: clamp(32px, 3.4vw, 48px); width: auto; display: block; }
+.brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.brand-name sup { font-size: 9px; margin-left: 3px; letter-spacing: 0.1em; }
+.head-actions { display: flex; align-items: center; gap: clamp(12px, 2vw, 32px); }
+.btn-contact {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: clamp(12px, 1.1vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: clamp(10px, 1.1vw, 15px) clamp(16px, 1.8vw, 26px);
+  transition: background 0.2s;
+}
+.btn-contact:hover { background: var(--ink-soft); }
+.burger {
+  width: 46px;
+  height: 40px;
+  border: 0;
+  padding: 0;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.burger span { display: block; height: 9px; background: var(--ink); transition: transform 0.25s; }
+@media (max-width: 560px) {
+  .burger { width: 36px; height: 30px; }
+  .burger span { height: 7px; }
+}
+@media (hover: hover) {
+  .burger:hover span:nth-child(2) { transform: translateX(-14%); }
+}
+
+/* Hero */
+.hero { padding-top: clamp(40px, 9vw, 130px); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px;
+}
+.hero h1 {
+  margin: clamp(16px, 2vw, 28px) 0 0;
+  font-size: clamp(2.25rem, calc(8.2vw + 0.5rem), 7rem);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  max-width: 10ch;
+  text-wrap: balance;
+}
+.scroll-cue {
+  width: clamp(72px, 13vw, 192px);
+  aspect-ratio: 1;
+  max-width: 100%;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  transition: background 0.25s, color 0.25s;
+}
+.scroll-cue svg { width: 34%; height: auto; transition: transform 0.3s; }
+.scroll-cue:hover { background: var(--ink); color: var(--cream); }
+.scroll-cue:hover svg { transform: translateY(8%); }
+
+.shapes { margin-top: clamp(48px, 8vw, 120px); }
+.shapes svg { display: block; width: 100%; height: auto; }
+.shapes .s { fill: var(--ink); transform-box: fill-box; animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.shapes .s:nth-child(2) { animation-delay: 0.06s; }
+.shapes .s:nth-child(3) { animation-delay: 0.12s; }
+.shapes .s:nth-child(4) { animation-delay: 0.18s; }
+.shapes .s:nth-child(5) { animation-delay: 0.24s; }
+.shapes .s:nth-child(6) { animation-delay: 0.30s; }
+.shapes .box { fill: none; stroke: var(--ink); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.shapes .tag { fill: var(--ink); }
+.shapes .tag-tx { fill: var(--cream); font-family: var(--mono); font-size: 3.4px; font-weight: 500; }
+@keyframes rise { from { transform: translateY(16%); } to { transform: none; } }
+
+/* Intro */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 7vw, 140px);
+  padding-block: clamp(64px, 10vw, 150px);
+}
+.statement {
+  margin: 0;
+  font-size: clamp(1.75rem, 3.3vw, 3rem);
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.lede { margin: 0; font-size: clamp(1.05rem, 1.35vw, 1.25rem); line-height: 1.55; max-width: 40ch; }
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-weight: 600;
+  text-decoration: none;
+}
+.arrow-link span { transition: transform 0.25s; }
+.arrow-link:hover span { transform: translateX(5px); }
+
+/* Work */
+.work { padding-bottom: clamp(80px, 11vw, 160px); }
+.work .eyebrow { margin-bottom: clamp(24px, 3vw, 40px); }
+.grid-work {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 1.8vw, 24px);
+}
+.card {
+  background: var(--ink);
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.card-art { aspect-ratio: 400 / 260; max-width: 100%; overflow: hidden; border-bottom: 1px solid var(--ink-soft); }
+.card-art svg { display: block; width: 100%; height: 100%; transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+@media (hover: hover) {
+  .card:hover .card-art svg { transform: scale(1.035); }
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  padding: clamp(20px, 2.2vw, 30px);
+  min-width: 0;
+}
+.card-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; }
+.pill {
+  border: 1.5px solid var(--cream);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.org { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); }
+.org a { color: var(--cream); text-underline-offset: 3px; }
+.card h3 { margin: 0; font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: 1.2; font-weight: 700; text-wrap: balance; }
+.card p { margin: 0; color: var(--cream-dim); max-width: 54ch; }
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 36px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--ink-soft);
+}
+.metric b {
+  display: block;
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.metric span { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-dim); }
+
+/* Card illustrations */
+.art .ln { fill: none; stroke: var(--cream); stroke-width: 1.5; }
+.art .fa { fill: none; stroke: var(--cream); stroke-width: 1; opacity: 0.22; }
+.art .dash { stroke-dasharray: 5 4; }
+.art .solid { fill: var(--cream); }
+.art .hole { fill: var(--ink); stroke: var(--cream); stroke-width: 1.5; }
+.art .ink { fill: var(--ink); }
+.art .tx { fill: var(--cream); font-family: var(--mono); font-size: 11px; }
+.art .dim { opacity: 0.6; }
+.art .code { white-space: pre; font-size: 10px; }
+.art .tag { fill: var(--cream); }
+.art .tag-tx { fill: var(--ink); font-family: var(--mono); font-size: 10px; font-weight: 500; }
+
+/* Experience */
+.split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(40px, 6vw, 120px);
+  margin-top: clamp(24px, 3vw, 40px);
+}
+.split > div { min-width: 0; }
+.split h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.meta {
+  margin: 12px 0 22px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+.split p.body { margin: 0; font-size: clamp(1.05rem, 1.35vw, 1.25rem); line-height: 1.55; max-width: 44ch; }
+.split p.note { margin: 18px 0 0; font-size: 14px; color: var(--stone); max-width: 48ch; }
+
+/* Toolkit */
+.toolkit { padding-block: clamp(80px, 11vw, 160px); }
+.tool-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 32px;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; font-size: 14px; color: var(--stone); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.legend i { width: 22px; height: 12px; border-radius: 999px; border: 1.5px solid var(--ink); }
+.legend i.on { background: var(--ink); }
+.tool-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 2fr);
+  gap: 16px clamp(24px, 5vw, 96px);
+  border-top: 3px solid var(--ink);
+  padding-block: clamp(20px, 2.4vw, 32px);
+}
+.tool-row:last-child { border-bottom: 3px solid var(--ink); }
+.tool-row h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.tool-row .count {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-variant-numeric: tabular-nums;
+}
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; align-content: start; min-width: 0; }
+.chips li {
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 7px 15px;
+  font-size: 15px;
+  line-height: 1.3;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.chips li.on { background: var(--ink); color: var(--cream); cursor: pointer; }
+.chips li.on.active { box-shadow: 0 0 0 2px var(--cream), 0 0 0 4px var(--ink); }
+@media (hover: hover) {
+  .chips li:not(.on):hover { background: var(--rule); }
+}
+.used { grid-column: 2; margin: 0; font-size: 14px; color: var(--stone); }
+.used b { color: var(--ink); font-weight: 600; }
+@media (max-width: 860px) {
+  .tool-row { grid-template-columns: minmax(0, 1fr); }
+  .used { grid-column: 1; }
+}
+@media (max-width: 560px) {
+  .chips { gap: 8px; }
+  .chips li { font-size: 14px; padding: 6px 12px; }
+}
+
+/* About band */
+.band-dark { background: var(--ink); color: var(--cream); }
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(36px, 6vw, 120px);
+  padding-block: clamp(72px, 10vw, 150px);
+}
+.about h2 {
+  margin: clamp(16px, 2vw, 24px) 0 0;
+  font-size: clamp(1.75rem, 3.3vw, 3rem);
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.about h2.eyebrow { margin: 0; font-size: clamp(12px, 1.1vw, 16px); font-weight: 700; letter-spacing: 0.2em; line-height: 1.5; }
+.about h2 a { text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.about picture { display: block; }
+.portrait {
+  display: block;
+  width: clamp(120px, 14vw, 200px);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.facts { display: grid; gap: 30px; align-content: start; padding-top: clamp(0px, 3vw, 44px); }
+.facts h3 { margin: 0 0 6px; font-size: 18px; font-weight: 700; }
+.facts p { margin: 0; color: var(--cream-dim); }
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.pubs a { color: var(--cream); text-underline-offset: 3px; }
+.pubs span { display: block; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream-dim); margin-top: 3px; }
+
+/* Footer */
+.foot-art { display: flex; justify-content: flex-end; overflow: hidden; padding-top: clamp(80px, 12vw, 180px); }
+.foot-art svg { display: block; width: min(78%, 1060px); height: auto; margin-right: -4%; flex: none; }
+.foot-art svg { fill: var(--ink); }
+.foot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 32px;
+  padding-block: clamp(56px, 7vw, 96px) clamp(32px, 4vw, 48px);
+}
+.foot h2 {
+  margin: 0;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  font-weight: 400;
+  text-wrap: balance;
+  max-width: 20ch;
+}
+.email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 22px; }
+.email { font-size: clamp(1.15rem, 1.7vw, 1.5rem); text-decoration: none; user-select: all; overflow-wrap: anywhere; }
+.email:hover { text-decoration: underline; text-underline-offset: 5px; }
+.copy {
+  border: 1.5px solid var(--cream);
+  border-radius: 999px;
+  background: none;
+  color: var(--cream);
+  font: 600 12px/1 var(--sans);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.copy:hover { background: var(--cream); color: var(--ink); }
+.socials { display: flex; flex-wrap: wrap; gap: 12px 26px; margin-top: 26px; }
+.socials a { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; font-size: 15px; }
+.socials a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.socials svg { width: 22px; height: 22px; flex: none; }
+.legal { margin: 0; font-size: 14px; color: var(--cream-dim); }
+
+/* Menu */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--ink);
+  color: var(--cream);
+  overflow-y: auto;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.menu-close {
+  width: clamp(38px, 3.4vw, 48px);
+  aspect-ratio: 1;
+  border: 0;
+  background: none;
+  position: relative;
+  cursor: pointer;
+}
+.menu-close span { position: absolute; left: 0; right: 0; top: 50%; height: 9px; margin-top: -4.5px; background: var(--cream); }
+.menu-close span:first-child { transform: rotate(45deg); }
+.menu-close span:last-child { transform: rotate(-45deg); }
+.menu nav ul { list-style: none; margin: clamp(24px, 6vh, 72px) 0 0; padding: 0; display: grid; gap: 4px; }
+.menu nav a {
+  font-size: clamp(3rem, 8vw, 6.75rem);
+  line-height: 1.1;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.menu nav a:hover { text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px; }
+.menu-foot { margin: clamp(32px, 6vh, 64px) 0 40px; font-size: clamp(1.1rem, 1.7vw, 1.5rem); user-select: all; }
+
+/* Cursor */
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--cursor);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 100;
+  transition: width 0.2s, height 0.2s, margin 0.2s;
+}
+.cursor.big { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
+
+@media (max-width: 860px) {
+  .intro, .split, .about { grid-template-columns: minmax(0, 1fr); }
+  .foot { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  .grid-work { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .brand-name { display: none; }
+  .hero-grid { gap: 16px; }
+  .foot-art svg { width: 96%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- AS mark: two bars, a triangle for the A, two half-discs for the S, and a lens dot -->
+    <g id="mark">
+      <rect class="s" x="0" y="0" width="18" height="48"/>
+      <rect class="s" x="24" y="0" width="18" height="48"/>
+      <polygon class="s" points="48,48 67,0 86,48"/>
+      <path class="s" d="M116 0 A12 12 0 0 0 116 24 Z M104 24 A12 12 0 0 1 104 48 Z"/>
+      <circle class="s" cx="138" cy="11" r="11"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="site-head gut">
+  <div class="wrap head-row">
+    <a class="brand" href="#top" aria-label="Abhiman Sakilam, back to top">
+      <svg viewBox="0 0 150 48" aria-hidden="true" style="fill:var(--ink)"><use href="#mark"/></svg>
+      <span class="brand-name">Abhiman Sakilam<sup>AI</sup></span>
+    </a>
+    <div class="head-actions">
+      <a class="btn-contact" href="#contact">Contact</a>
+      <button class="burger" id="menu-open" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu gut" id="menu" hidden>
+  <div class="wrap">
+    <div class="head-row">
+      <a class="brand" href="#top" data-close>
+        <svg viewBox="0 0 150 48" aria-hidden="true" style="fill:var(--cream)"><use href="#mark"/></svg>
+        <span class="brand-name">Abhiman Sakilam<sup>AI</sup></span>
+      </a>
+      <button class="menu-close" id="menu-close" type="button" aria-label="Close menu"><span></span><span></span></button>
+    </div>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#work" data-close>work</a></li>
+        <li><a href="#experience" data-close>experience</a></li>
+        <li><a href="#toolkit" data-close>toolkit</a></li>
+        <li><a href="#about" data-close>about</a></li>
+        <li><a href="#contact" data-close>contact</a></li>
+      </ul>
+    </nav>
+    <p class="menu-foot">abhiman.sakilam@gmail.com</p>
+  </div>
+</div>
+
+<main id="top">
+  <section class="hero gut">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">AI Deep Learning Engineer · Computer Vision</p>
+          <h1>Turning camera feeds into decisions</h1>
+        </div>
+        <a class="scroll-cue" href="#work" aria-label="Jump to selected work">
+          <svg viewBox="0 0 40 80" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 2v74M4 60l16 16 16-16"/></svg>
+        </a>
+      </div>
+      <div class="shapes" aria-hidden="true">
+        <svg viewBox="-2 -16 154 64">
+          <rect class="s" x="0" y="0" width="18" height="48"/>
+          <rect class="s" x="24" y="0" width="18" height="48"/>
+          <polygon class="s" points="48,48 67,0 86,48"/>
+          <path class="s" d="M116 0 A12 12 0 0 0 116 24 Z"/>
+          <path class="s" d="M104 24 A12 12 0 0 1 104 48 Z"/>
+          <circle class="s" cx="138" cy="11" r="11"/>
+          <path class="box" d="M44 -4 h7 M44 -4 v7 M90 -4 h-7 M90 -4 v7 M44 52 h7 M44 52 v-7 M90 52 h-7 M90 52 v-7"/>
+          <rect class="tag" x="44" y="-11.5" width="30" height="6"/>
+          <text class="tag-tx" x="45.6" y="-7.3">engineer 0.97</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="gut" aria-label="Introduction">
+    <div class="wrap intro">
+      <h2 class="statement">A model that scores well on a benchmark is the easy part. Mine have to work on offshore rigs, low-clarity streams and cameras that move.</h2>
+      <div>
+        <p class="lede">I'm Abhiman, an AI deep learning engineer at Detect Technologies. I take computer vision from fine-tuning to production on RTSP/RTMP surveillance infrastructure, and most of my time goes into what happens after the demo: inference speed, edge deployment and false positives.</p>
+        <a class="arrow-link" href="#work">See the work <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="work gut" id="work">
+    <div class="wrap">
+      <h2 class="eyebrow">Selected work</h2>
+      <div class="grid-work">
+
+        <article class="card">
+          <div class="card-art">
+            <svg class="art" viewBox="0 0 400 260" role="img" aria-label="Ground-plane grid with a person and a forklift detected, 4.2 metres apart">
+              <line class="fa" x1="0" y1="70" x2="400" y2="70"/>
+              <line class="fa" x1="113" y1="70" x2="-300" y2="260"/><line class="fa" x1="139" y1="70" x2="-150" y2="260"/>
+              <line class="fa" x1="165" y1="70" x2="0" y2="260"/><line class="fa" x1="183" y1="70" x2="100" y2="260"/>
+              <line class="fa" x1="200" y1="70" x2="200" y2="260"/><line class="fa" x1="217" y1="70" x2="300" y2="260"/>
+              <line class="fa" x1="235" y1="70" x2="400" y2="260"/><line class="fa" x1="261" y1="70" x2="550" y2="260"/>
+              <line class="fa" x1="287" y1="70" x2="700" y2="260"/>
+              <line class="fa" x1="0" y1="84" x2="400" y2="84"/><line class="fa" x1="0" y1="104" x2="400" y2="104"/>
+              <line class="fa" x1="0" y1="134" x2="400" y2="134"/><line class="fa" x1="0" y1="176" x2="400" y2="176"/>
+              <line class="fa" x1="0" y1="236" x2="400" y2="236"/>
+              <circle class="solid" cx="116" cy="112" r="8"/>
+              <rect class="solid" x="108" y="122" width="16" height="36" rx="4"/>
+              <path d="M112 156 L110 184 M120 156 L122 184" style="stroke:var(--cream)" stroke-width="5" stroke-linecap="round"/>
+              <rect class="ln" x="96" y="96" width="40" height="92"/>
+              <rect class="tag" x="96" y="81" width="68" height="15"/>
+              <text class="tag-tx" x="100" y="92">person .93</text>
+              <rect class="solid" x="250" y="150" width="64" height="32" rx="3"/>
+              <rect class="ln" x="258" y="130" width="30" height="20"/>
+              <rect class="solid" x="318" y="124" width="6" height="58"/>
+              <path d="M324 178 H348" style="stroke:var(--cream)" stroke-width="3"/>
+              <circle class="hole" cx="264" cy="186" r="8"/><circle class="hole" cx="302" cy="186" r="8"/>
+              <rect class="ln" x="236" y="116" width="120" height="82"/>
+              <rect class="tag" x="236" y="101" width="80" height="15"/>
+              <text class="tag-tx" x="240" y="112">forklift .91</text>
+              <circle class="solid" cx="116" cy="188" r="3.5"/><circle class="solid" cx="283" cy="196" r="3.5"/>
+              <line class="ln dash" x1="116" y1="188" x2="283" y2="196"/>
+              <rect class="hole" x="174" y="200" width="50" height="18"/>
+              <text class="tx" x="181" y="213">4.2 m</text>
+              <text class="tx dim" x="16" y="24">ground plane · H 3×3</text>
+              <text class="tx dim" x="384" y="24" text-anchor="end">25 FPS</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="pill">Homography · Live CCTV</span><span class="org">Detect Technologies</span></div>
+            <h3>Vehicle–person collision pre-warning</h3>
+            <p>Projects detections onto the ground plane to measure the real distance between people and moving vehicles, then warns before they meet.</p>
+            <div class="metrics">
+              <div class="metric"><b>0.3 m</b><span>Error up to 15 m</span></div>
+              <div class="metric"><b>−40%</b><span>False positives</span></div>
+              <div class="metric"><b>25+ FPS</b><span>Live feeds</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-art">
+            <svg class="art" viewBox="0 0 400 260" role="img" aria-label="Number plate read by OCR above a boom barrier">
+              <rect class="ln" x="100" y="64" width="200" height="60" rx="6" style="stroke-width:2"/>
+              <text x="200" y="102" text-anchor="middle" style="fill:var(--cream);font-family:var(--mono)" font-size="22" font-weight="500" letter-spacing="1">TS 09 EA 4471</text>
+              <path class="ln" d="M90 74 V54 H110 M290 54 H310 V74 M310 114 V134 H290 M110 134 H90 V114"/>
+              <rect class="tag" x="90" y="38" width="96" height="15"/>
+              <text class="tag-tx" x="94" y="49">plate .97 · ocr</text>
+              <text class="tx dim" x="200" y="158" text-anchor="middle">read → PLC → barrier up</text>
+              <line class="fa" x1="0" y1="240" x2="400" y2="240"/>
+              <rect class="ln" x="60" y="181" width="284" height="10"/>
+              <rect class="solid" x="80" y="181" width="20" height="10"/><rect class="solid" x="120" y="181" width="20" height="10"/>
+              <rect class="solid" x="160" y="181" width="20" height="10"/><rect class="solid" x="200" y="181" width="20" height="10"/>
+              <rect class="solid" x="240" y="181" width="20" height="10"/><rect class="solid" x="280" y="181" width="20" height="10"/>
+              <rect class="solid" x="344" y="178" width="16" height="62"/>
+              <circle class="hole" cx="352" cy="186" r="6"/>
+              <text class="tx dim" x="16" y="24">lane 1 / 2</text>
+              <text class="tx dim" x="384" y="24" text-anchor="end">&lt;200 ms</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="pill">OCR · PLC integration</span><span class="org">Detect Technologies</span></div>
+            <h3>ANPR boom-barrier automation</h3>
+            <p>Reads plates through a multi-stage OCR pipeline and opens PLC-controlled boom barriers, so no one has to log vehicles at the gate.</p>
+            <div class="metrics">
+              <div class="metric"><b>~97%</b><span>Plate accuracy</span></div>
+              <div class="metric"><b>&lt;200 ms</b><span>Inference</span></div>
+              <div class="metric"><b>2 lanes</b><span>Entry and exit</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-art">
+            <svg class="art" viewBox="0 0 400 260" role="img" aria-label="Spill detected on a floor with the model's structured JSON output">
+              <polygon class="fa" points="20,232 190,232 150,108 60,108"/>
+              <line class="fa" x1="105" y1="108" x2="105" y2="232"/>
+              <ellipse class="solid" cx="105" cy="188" rx="46" ry="12"/>
+              <ellipse class="solid" cx="152" cy="200" rx="8" ry="3"/>
+              <rect class="ln" x="52" y="168" width="110" height="40"/>
+              <rect class="tag" x="52" y="153" width="82" height="15"/>
+              <text class="tag-tx" x="56" y="164">spillage .89</text>
+              <rect class="fa" x="200" y="52" width="190" height="150" rx="4" style="opacity:.4"/>
+              <text class="tx code" xml:space="preserve" x="212" y="80">{</text>
+              <text class="tx code" xml:space="preserve" x="212" y="100">  "hazard": "spillage",</text>
+              <text class="tx code" xml:space="preserve" x="212" y="120">  "bbox": [52,168,162,208],</text>
+              <text class="tx code" xml:space="preserve" x="212" y="140">  "pathway_clear": false</text>
+              <text class="tx code" xml:space="preserve" x="212" y="160">}</text>
+              <text class="tx dim" x="212" y="188" style="font-size:10px">xgrammar · schema-locked</text>
+              <text class="tx dim" x="16" y="24">qwen3-vl-8b · qlora</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="pill">Qwen3-8B VL · QLoRA</span><span class="org">Detect Technologies</span></div>
+            <h3>VLM hazard detection</h3>
+            <p>Fine-tuned a vision-language model to find blocked pathways, spills and trip hazards, using its native localization and XGrammar-constrained JSON for real-time analytics.</p>
+            <div class="metrics">
+              <div class="metric"><b>8B</b><span>VLM fine-tuned, QLoRA/PEFT</span></div>
+              <div class="metric"><b>3</b><span>Hazard types</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-art">
+            <svg class="art" viewBox="0 0 400 260" role="img" aria-label="Worker detected, with helmet and vest classified">
+              <rect class="ln dash" x="140" y="40" width="120" height="204"/>
+              <rect class="tag" x="140" y="25" width="68" height="15"/>
+              <text class="tag-tx" x="144" y="36">person .98</text>
+              <circle class="solid" cx="200" cy="94" r="17"/>
+              <path class="ink" d="M178 90 A22 22 0 0 1 222 90 Z" style="stroke:var(--cream);stroke-width:2"/>
+              <path d="M172 90 H228" style="stroke:var(--cream)" stroke-width="3"/>
+              <rect class="solid" x="160" y="118" width="12" height="58" rx="6"/>
+              <rect class="solid" x="228" y="118" width="12" height="58" rx="6"/>
+              <rect class="solid" x="172" y="114" width="56" height="78" rx="8"/>
+              <rect class="ink" x="172" y="140" width="56" height="6"/>
+              <rect class="ink" x="172" y="162" width="56" height="6"/>
+              <rect class="solid" x="178" y="190" width="16" height="48"/>
+              <rect class="solid" x="206" y="190" width="16" height="48"/>
+              <rect class="ln" x="168" y="62" width="64" height="32"/>
+              <line class="fa" x1="232" y1="72" x2="282" y2="72" style="opacity:.6"/>
+              <rect class="tag" x="282" y="65" width="80" height="15"/>
+              <text class="tag-tx" x="286" y="76">helmet .96</text>
+              <rect class="ln" x="164" y="110" width="72" height="84"/>
+              <line class="fa" x1="236" y1="152" x2="282" y2="152" style="opacity:.6"/>
+              <rect class="tag" x="282" y="145" width="66" height="15"/>
+              <text class="tag-tx" x="286" y="156">vest .94</text>
+              <text class="tx dim" x="16" y="24">rt-detr → crop → vit</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="pill">ViT + LoRA · RT-DETR / YOLO26</span><span class="org">Detect Technologies</span></div>
+            <h3>PPE compliance analytics</h3>
+            <p>Detectors find each worker, then a LoRA-tuned Vision Transformer recognises their safety gear, even on low-resolution RTSP/RTMP streams.</p>
+            <div class="metrics">
+              <div class="metric"><b>96%</b><span>Accuracy</span></div>
+              <div class="metric"><b>Low-res</b><span>Surveillance streams</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-art">
+            <svg class="art" viewBox="0 0 400 260" role="img" aria-label="Rows of video frames filtered down to a few key frames">
+              <text class="tx" x="16" y="30">3 TB raw video</text>
+              <g>
+                <rect class="fa" x="16" y="44" width="28" height="20"/><rect class="fa" x="50" y="44" width="28" height="20"/>
+                <rect class="solid" x="84" y="44" width="28" height="20"/><rect class="fa" x="118" y="44" width="28" height="20"/>
+                <rect class="fa" x="152" y="44" width="28" height="20"/><rect class="fa" x="186" y="44" width="28" height="20"/>
+                <rect class="solid" x="220" y="44" width="28" height="20"/><rect class="fa" x="254" y="44" width="28" height="20"/>
+                <rect class="fa" x="288" y="44" width="28" height="20"/><rect class="solid" x="322" y="44" width="28" height="20"/>
+                <rect class="fa" x="356" y="44" width="28" height="20"/>
+                <rect class="fa" x="16" y="72" width="28" height="20"/><rect class="solid" x="50" y="72" width="28" height="20"/>
+                <rect class="fa" x="84" y="72" width="28" height="20"/><rect class="fa" x="118" y="72" width="28" height="20"/>
+                <rect class="fa" x="152" y="72" width="28" height="20"/><rect class="fa" x="186" y="72" width="28" height="20"/>
+                <rect class="fa" x="220" y="72" width="28" height="20"/><rect class="fa" x="254" y="72" width="28" height="20"/>
+                <rect class="solid" x="288" y="72" width="28" height="20"/><rect class="fa" x="322" y="72" width="28" height="20"/>
+                <rect class="fa" x="356" y="72" width="28" height="20"/>
+                <rect class="fa" x="16" y="100" width="28" height="20"/><rect class="fa" x="50" y="100" width="28" height="20"/>
+                <rect class="fa" x="84" y="100" width="28" height="20"/><rect class="fa" x="118" y="100" width="28" height="20"/>
+                <rect class="solid" x="152" y="100" width="28" height="20"/><rect class="fa" x="186" y="100" width="28" height="20"/>
+                <rect class="fa" x="220" y="100" width="28" height="20"/><rect class="fa" x="254" y="100" width="28" height="20"/>
+                <rect class="fa" x="288" y="100" width="28" height="20"/><rect class="fa" x="322" y="100" width="28" height="20"/>
+                <rect class="solid" x="356" y="100" width="28" height="20"/>
+              </g>
+              <line class="fa" x1="40" y1="132" x2="140" y2="172" style="opacity:.5"/>
+              <line class="fa" x1="360" y1="132" x2="260" y2="172" style="opacity:.5"/>
+              <text class="tx dim" x="200" y="152" text-anchor="middle" style="font-size:10px">motion filter · key frames</text>
+              <rect class="solid" x="127" y="178" width="26" height="18"/><rect class="solid" x="157" y="178" width="26" height="18"/>
+              <rect class="solid" x="187" y="178" width="26" height="18"/><rect class="solid" x="217" y="178" width="26" height="18"/>
+              <rect class="solid" x="247" y="178" width="26" height="18"/>
+              <text class="tx" x="200" y="222" text-anchor="middle">200 GB kept, auto-labelled</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="pill">Multi-GPU · Zero-shot</span><span class="org">Detect Technologies</span></div>
+            <h3>Visual mining platform</h3>
+            <p>Automates dataset annotation, augmentation and quality checks with zero-shot detection, and keeps only the frames worth training on.</p>
+            <div class="metrics">
+              <div class="metric"><b>93%</b><span>Less storage</span></div>
+              <div class="metric"><b>3 TB → 200 GB</b><span>Raw video</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-art">
+            <svg class="art" viewBox="0 0 400 260" role="img" aria-label="Prompt tuning loop with errors shrinking each round">
+              <path class="ln" d="M120 60 A60 60 0 1 1 63.6 99.5" style="stroke-width:2"/>
+              <polygon class="solid" points="66.3,92 68.5,103.4 57.3,99.4"/>
+              <text class="tx" x="120" y="117" text-anchor="middle">prompt</text>
+              <text class="tx dim" x="120" y="133" text-anchor="middle">v1 → vN</text>
+              <text class="tx dim" x="120" y="48" text-anchor="middle">run VLM</text>
+              <text class="tx dim" x="188" y="124">FP / FN</text>
+              <text class="tx dim" x="120" y="200" text-anchor="middle">rewrite</text>
+              <text class="tx dim" x="262" y="58">errors per round</text>
+              <text class="tx dim" x="262" y="82" text-anchor="end">r1</text><rect class="solid" x="270" y="72" width="116" height="13"/>
+              <text class="tx dim" x="262" y="106" text-anchor="end">r2</text><rect class="solid" x="270" y="96" width="82" height="13"/>
+              <text class="tx dim" x="262" y="130" text-anchor="end">r3</text><rect class="solid" x="270" y="120" width="52" height="13"/>
+              <text class="tx dim" x="262" y="154" text-anchor="end">r4</text><rect class="solid" x="270" y="144" width="30" height="13"/>
+              <text class="tx dim" x="262" y="178" text-anchor="end">r5</text><rect class="solid" x="270" y="168" width="14" height="13"/>
+              <text class="tx dim" x="16" y="24">qwen3-vl · internvl3.5 · molmo</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="pill">Self-correcting prompts</span><span class="org">Detect Technologies · 2025</span></div>
+            <h3>Automated prompt optimizer for VLMs</h3>
+            <p>Runs prompts against ground truth, reads the false positives and negatives, and rewrites the prompt until the classifier holds up.</p>
+            <div class="metrics">
+              <div class="metric"><b>−50%</b><span>Prompt engineering effort</span></div>
+              <div class="metric"><b>80%</b><span>Faster use-case rollout</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-art">
+            <svg class="art" viewBox="0 0 400 260" role="img" aria-label="Intent router dispatching to seven agents">
+              <line class="fa" x1="200" y1="128" x2="200" y2="43"/><line class="fa" x1="200" y1="128" x2="274.3" y2="75"/>
+              <line class="fa" x1="200" y1="128" x2="292.6" y2="146.9"/><line class="fa" x1="200" y1="128" x2="241.2" y2="204.6"/>
+              <line class="fa" x1="200" y1="128" x2="158.8" y2="204.6"/><line class="fa" x1="200" y1="128" x2="107.4" y2="146.9"/>
+              <line class="fa" x1="200" y1="128" x2="125.7" y2="75"/>
+              <circle class="hole" cx="200" cy="43" r="9"/><circle class="hole" cx="274.3" cy="75" r="9"/>
+              <circle class="hole" cx="292.6" cy="146.9" r="9"/><circle class="hole" cx="241.2" cy="204.6" r="9"/>
+              <circle class="hole" cx="158.8" cy="204.6" r="9"/><circle class="hole" cx="107.4" cy="146.9" r="9"/>
+              <circle class="hole" cx="125.7" cy="75" r="9"/>
+              <circle class="solid" cx="200" cy="128" r="27"/>
+              <text class="tag-tx" x="200" y="132" text-anchor="middle">router</text>
+              <text class="tx" x="200" y="26" text-anchor="middle">summary</text>
+              <text class="tx" x="290" y="72">actions</text>
+              <text class="tx" x="308" y="151">decisions</text>
+              <text class="tx" x="241" y="232" text-anchor="middle">screen</text>
+              <text class="tx dim" x="16" y="24">distil-whisper → ws</text>
+              <text class="tx dim" x="384" y="244" text-anchor="end">redis per session</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="pill">Personal · Multi-agent</span><span class="org"><a href="https://github.com/Abhiman-Sakilam/MeetMind">GitHub ↗</a></span></div>
+            <h3>MeetMind</h3>
+            <p>A meeting platform where a LangChain intent router sends live audio to specialised agents, with local GPU transcription, WebRTC video and an emailed summary after every call.</p>
+            <div class="metrics">
+              <div class="metric"><b>7</b><span>Agents</span></div>
+              <div class="metric"><b>&lt;10 s</b><span>Summary after meeting</span></div>
+              <div class="metric"><b>&lt;2 min</b><span>Docker setup</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-art">
+            <svg class="art" viewBox="0 0 400 260" role="img" aria-label="Hybrid retrieval: BM25 and FAISS fused with RRF, then reranked">
+              <text class="tx dim" x="47" y="100" text-anchor="middle">HyDE</text>
+              <rect class="ln" x="16" y="110" width="62" height="36"/>
+              <text class="tx" x="47" y="132" text-anchor="middle">query</text>
+              <line class="fa" x1="78" y1="128" x2="120" y2="84" style="opacity:.6"/>
+              <line class="fa" x1="78" y1="128" x2="120" y2="172" style="opacity:.6"/>
+              <rect class="ln" x="120" y="68" width="72" height="32"/>
+              <text class="tx" x="156" y="88" text-anchor="middle">BM25</text>
+              <rect class="ln" x="120" y="156" width="72" height="32"/>
+              <text class="tx" x="156" y="176" text-anchor="middle">FAISS</text>
+              <line class="fa" x1="192" y1="84" x2="236" y2="128" style="opacity:.6"/>
+              <line class="fa" x1="192" y1="172" x2="236" y2="128" style="opacity:.6"/>
+              <circle class="solid" cx="252" cy="128" r="17"/>
+              <text class="tag-tx" x="252" y="132" text-anchor="middle">RRF</text>
+              <line class="ln" x1="269" y1="128" x2="290" y2="128"/>
+              <rect class="ln" x="290" y="112" width="60" height="32"/>
+              <text class="tx" x="320" y="132" text-anchor="middle">rerank</text>
+              <line class="ln" x1="350" y1="128" x2="370" y2="128"/>
+              <rect class="ln" x="370" y="108" width="22" height="40"/>
+              <path class="fa" d="M375 118 H387 M375 125 H387 M375 132 H384" style="opacity:.7"/>
+              <text class="tx dim" x="392" y="166" text-anchor="end">answer + citations</text>
+              <text class="tx dim" x="200" y="226" text-anchor="middle">recall · MRR · nDCG · LLM judge</text>
+              <text class="tx dim" x="16" y="24">hybrid retrieval</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="pill">Personal · Retrieval</span><span class="org"><a href="https://github.com/Abhiman-Sakilam/RAG-Biology-Medical-Q-A">GitHub ↗</a></span></div>
+            <h3>Biology and medical Q&amp;A</h3>
+            <p>A RAG system with BM25 + FAISS retrieval, RRF fusion, LLM reranking, HyDE query rewriting, citations and hallucination guardrails.</p>
+            <div class="metrics">
+              <div class="metric"><b>4,000+</b><span>QA pairs evaluated</span></div>
+              <div class="metric"><b>4</b><span>Metrics incl. LLM judge</span></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="gut" id="experience">
+    <div class="wrap">
+      <h2 class="eyebrow">Experience &amp; education</h2>
+      <div class="split">
+        <div>
+          <h2>Detect Technologies</h2>
+          <p class="meta">AI Deep Learning Engineer · Chennai · Dec 2024 – present</p>
+          <p class="body">I solely owned three end-to-end industrial AI deployments for Kaneka, UTI Patterson and LMEL. That meant building custom safety and security use cases for offshore rigs, low-clarity video, shifting fields of view and difficult camera conditions, and handling the model integration, optimisation, validation and production rollout myself.</p>
+          <p class="note">I've also run 50+ technical interviews for AI software engineer and intern hiring, covering ML/DL, computer vision and software engineering.</p>
+        </div>
+        <div>
+          <h2>Amrita Vishwa Vidyapeetham</h2>
+          <p class="meta">B.Tech, Artificial Intelligence · Chennai · 2020 – 2024</p>
+          <p class="body">Four years of AI coursework and three IEEE conference papers, covering behavioural cloning for autonomous driving, GANs for satellite-to-map image translation, and deep reinforcement learning for stock trading.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="toolkit gut" id="toolkit">
+    <div class="wrap">
+      <div class="tool-head">
+        <h2 class="eyebrow">Toolkit</h2>
+        <p class="legend"><span><i class="on"></i>Used in the work above (select one to see where)</span><span><i></i>Also in my toolkit</span></p>
+      </div>
+
+      <div class="tool-row">
+        <h3>Computer vision<span class="count">13 skills</span></h3>
+        <ul class="chips">
+          <li class="on" title="Collision pre-warning, PPE compliance, visual mining">Object detection</li>
+          <li class="on" title="PPE compliance (ViT attribute recognition)">Image classification</li>
+          <li class="on" title="ANPR boom-barrier automation">OCR</li>
+          <li class="on" title="Collision pre-warning (ground-plane projection)">Homography</li>
+          <li class="on" title="Visual mining platform">Zero-shot detection</li>
+          <li class="on" title="Visual mining platform">Key-frame extraction</li>
+          <li>Tracking</li>
+          <li>Segmentation</li>
+          <li>Pose estimation</li>
+          <li>Depth estimation</li>
+          <li>Re-identification</li>
+          <li>Feature matching</li>
+          <li>Camera calibration</li>
+        </ul>
+      </div>
+
+      <div class="tool-row">
+        <h3>Models<span class="count">10 families</span></h3>
+        <ul class="chips">
+          <li class="on" title="PPE compliance">YOLOv8 / v11 / v26</li>
+          <li class="on" title="PPE compliance">RT-DETR</li>
+          <li class="on" title="PPE compliance (LoRA fine-tuning)">Vision Transformer</li>
+          <li class="on" title="VLM hazard detection, prompt optimizer">Qwen3-VL</li>
+          <li class="on" title="Prompt optimizer">InternVL3.5</li>
+          <li class="on" title="Prompt optimizer">Molmo</li>
+          <li class="on" title="MeetMind (local speech-to-text)">Distil-Whisper</li>
+          <li>SAM</li>
+          <li>CLIP</li>
+          <li>Grounding DINO</li>
+        </ul>
+      </div>
+
+      <div class="tool-row">
+        <h3>Fine-tuning &amp; inference<span class="count">10 skills</span></h3>
+        <ul class="chips">
+          <li class="on" title="VLM hazard detection, PPE compliance">LoRA</li>
+          <li class="on" title="VLM hazard detection">QLoRA / PEFT</li>
+          <li class="on" title="VLM hazard detection (constrained JSON output)">XGrammar</li>
+          <li class="on" title="Collision pre-warning (25+ FPS), ANPR (&lt;200 ms)">Inference optimization</li>
+          <li class="on" title="Prompt optimizer (FP/FN), RAG (Recall, MRR, nDCG)">Model evaluation</li>
+          <li>vLLM</li>
+          <li>Quantization</li>
+          <li>Unsloth</li>
+          <li>Transfer learning</li>
+          <li>Edge deployment</li>
+        </ul>
+      </div>
+
+      <div class="tool-row">
+        <h3>LLMs, RAG &amp; agents<span class="count">12 skills</span></h3>
+        <ul class="chips">
+          <li class="on" title="Biology and medical Q&amp;A">RAG</li>
+          <li class="on" title="Biology and medical Q&amp;A (hybrid retrieval)">BM25 + FAISS</li>
+          <li class="on" title="MeetMind (7-agent intent router)">Multi-agent systems</li>
+          <li class="on" title="MeetMind">LangChain</li>
+          <li class="on" title="Prompt optimizer">Prompt engineering</li>
+          <li class="on" title="RAG system (LLM reranking, LLM-as-judge)">LLM reranking &amp; judging</li>
+          <li>LangGraph</li>
+          <li>MCP</li>
+          <li>OpenAI API</li>
+          <li>AWS Bedrock</li>
+          <li>Hugging Face</li>
+          <li>Generative AI</li>
+        </ul>
+      </div>
+
+      <div class="tool-row">
+        <h3>Systems &amp; deployment<span class="count">13 skills</span></h3>
+        <ul class="chips">
+          <li class="on" title="PPE compliance, collision pre-warning">RTSP / RTMP pipelines</li>
+          <li class="on" title="Visual mining platform">Multi-GPU</li>
+          <li class="on" title="MeetMind (single-command GPU deployment)">Docker</li>
+          <li class="on" title="MeetMind (per-session persistence)">Redis</li>
+          <li class="on" title="MeetMind backend">FastAPI</li>
+          <li class="on" title="ANPR boom-barrier automation">PLC integration</li>
+          <li>NVIDIA DeepStream</li>
+          <li>Linux</li>
+          <li>AWS EC2 / S3</li>
+          <li>GitLab CI/CD</li>
+          <li>REST APIs</li>
+          <li>System design</li>
+          <li>Voxel51</li>
+        </ul>
+      </div>
+
+      <div class="tool-row">
+        <h3>Languages &amp; frameworks<span class="count">9 skills</span></h3>
+        <ul class="chips">
+          <li class="on" title="Every project above">Python</li>
+          <li>PyTorch</li>
+          <li>TensorFlow</li>
+          <li>Keras</li>
+          <li>OpenCV</li>
+          <li>Java</li>
+          <li>MySQL</li>
+          <li>Data structures &amp; algorithms</li>
+          <li>OOP</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-dark gut" id="about">
+    <div class="wrap about">
+      <div>
+        <picture>
+          <source srcset="profile.webp" type="image/webp">
+          <img class="portrait" src="profile.jpg" alt="Portrait of Abhiman Sakilam" width="512" height="512" loading="lazy" decoding="async">
+        </picture>
+        <h2 class="eyebrow">About me</h2>
+        <h2>I'm Abhiman Sakilam, an AI engineer based in Hyderabad. I currently build vision systems that keep people safe on industrial sites at <a href="https://www.detecttechnologies.com/">Detect Technologies</a>.</h2>
+      </div>
+      <div class="facts">
+        <div>
+          <h3>Focus</h3>
+          <p>Production computer vision, VLM fine-tuning, inference optimisation and edge deployment.</p>
+        </div>
+        <div>
+          <h3>Publications</h3>
+          <ul class="pubs">
+            <li><a href="https://ieeexplore.ieee.org/document/10649326">Deep Reinforcement Learning Algorithms for Profitable Stock Trading Strategies</a><span>IEEE InC4 Conference · Mar 2024</span></li>
+            <li><a href="https://ieeexplore.ieee.org/document/10353273">Towards Autonomous Driving System Using Behavioral Cloning Approach</a><span>IEEE Conference · Aug 2023</span></li>
+            <li><a href="https://ieeexplore.ieee.org/abstract/document/10537690">A Comparative Analysis of Satellite–Map Image Translation Using GANs</a><span>IEEE Conference · May 2023</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="foot-art" aria-hidden="true">
+  <svg viewBox="0 0 150 30"><use href="#mark"/></svg>
+</div>
+<footer class="band-dark gut" id="contact">
+  <div class="wrap foot">
+    <div>
+      <h2>Have a camera feed that needs to see? Let's talk.</h2>
+      <div class="email-row">
+        <a class="email" id="email" href="mailto:abhiman.sakilam@gmail.com">abhiman.sakilam@gmail.com</a>
+        <button class="copy" id="copy" type="button">Copy email</button>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/abhiman-sakilam-3584271ba/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/Abhiman-Sakilam">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.9-2.3c3-.3 6-1.5 6-6.5a5 5 0 0 0-1.4-3.5 4.7 4.7 0 0 0-.1-3.5s-1.1-.3-3.6 1.4a12.4 12.4 0 0 0-6.5 0C6 1.4 4.9 1.7 4.9 1.7a4.7 4.7 0 0 0-.1 3.5A5 5 0 0 0 3.4 8.7c0 5 3 6.2 6 6.5a3 3 0 0 0-.9 2.3V21"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+    <p class="legal">© Abhiman Sakilam 2026</p>
+  </div>
+</footer>
+
+<div class="cursor" id="cursor" hidden></div>
+
+<script>
+(function () {
+  var menu = document.getElementById('menu');
+  var openBtn = document.getElementById('menu-open');
+  var closeBtn = document.getElementById('menu-close');
+
+  function openMenu() {
+    menu.hidden = false;
+    openBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    var first = menu.querySelector('nav a');
+    if (first) first.focus();
+  }
+  function closeMenu() {
+    menu.hidden = true;
+    openBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  openBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', function () { closeMenu(); openBtn.focus(); });
+  menu.querySelectorAll('[data-close]').forEach(function (a) { a.addEventListener('click', closeMenu); });
+
+  // Filled skill pills: show where each was used. Works with tap, click, hover and keyboard.
+  document.querySelectorAll('.tool-row').forEach(function (row) {
+    var caption = document.createElement('p');
+    caption.className = 'used';
+    caption.setAttribute('aria-live', 'polite');
+    caption.hidden = true;
+    row.appendChild(caption);
+    row.querySelectorAll('.chips li.on').forEach(function (chip) {
+      chip.dataset.used = chip.title;
+      chip.removeAttribute('title');
+      chip.tabIndex = 0;
+      function show() {
+        row.querySelectorAll('.chips li.active').forEach(function (c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+        caption.innerHTML = '';
+        var name = document.createElement('b');
+        name.textContent = chip.textContent + ':';
+        caption.appendChild(name);
+        caption.appendChild(document.createTextNode(' used in ' + chip.dataset.used));
+        caption.hidden = false;
+      }
+      chip.addEventListener('click', show);
+      chip.addEventListener('focus', show);
+      chip.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(); } });
+      if (window.matchMedia('(hover: hover)').matches) chip.addEventListener('mouseenter', show);
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !menu.hidden) { closeMenu(); openBtn.focus(); }
+  });
+
+  var copyBtn = document.getElementById('copy');
+  var email = document.getElementById('email');
+  copyBtn.addEventListener('click', function () {
+    var text = email.textContent.trim();
+    function selectFallback() {
+      var range = document.createRange();
+      range.selectNodeContents(email);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      copyBtn.textContent = 'Selected, press Ctrl+C';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        copyBtn.textContent = 'Copied';
+        setTimeout(function () { copyBtn.textContent = 'Copy email'; }, 1800);
+      }, selectFallback);
+    } catch (err) { selectFallback(); }
+  });
+
+  var fine = window.matchMedia('(pointer: fine)').matches;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (fine && !still) {
+    var dot = document.getElementById('cursor');
+    var x = -100, y = -100, cx = -100, cy = -100;
+    dot.hidden = false;
+    window.addEventListener('mousemove', function (e) { x = e.clientX; y = e.clientY; }, { passive: true });
+    document.addEventListener('mouseover', function (e) {
+      dot.classList.toggle('big', !!e.target.closest('a, button'));
+    });
+    document.addEventListener('mouseleave', function () { x = y = -100; });
+    (function tick() {
+      cx += (x - cx) * 0.25;
+      cy += (y - cy) * 0.25;
+      dot.style.transform = 'translate(' + cx + 'px,' + cy + 'px)';
+      requestAnimationFrame(tick);
+    })();
+  }
+})();
+</script>
+</body>
+</html>
