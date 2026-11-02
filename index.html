@@ -211,7 +211,7 @@
     }
     .hero-layer {
       position: absolute; bottom: 0; left: 50%; height: 100%; aspect-ratio: 2 / 3;
-      transform: translateX(-50%) scale(var(--zoom, var(--base-zoom))); transform-origin: 50% 38%;
+      transform: translateX(-50%) scale(var(--zoom, var(--base-zoom))); transform-origin: 50% var(--zo-y, 38%);
       will-change: transform; pointer-events: none;
     }
     .hero-layer img { width: 100%; height: 100%; object-fit: cover; }
@@ -236,6 +236,7 @@
       text-shadow: 0 2px 40px rgba(0, 0, 0, .35);
     }
     .hero__name span { display: block; will-change: transform, opacity; }
+    .hero-shade { position: absolute; inset: 0; z-index: 4; background: #000; opacity: 0; pointer-events: none; }
     .hero-edge {
       position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0;
       border-radius: 0; padding: 1.5px; background: var(--neon);
@@ -586,11 +587,6 @@
       body { font-size: 16px; }
       .hero-stage { --base-zoom: 1.08; }
       .nav__cta { display: none; }
-      .hero-layer {
-        left: 0; width: 100%; aspect-ratio: auto;
-        transform: scale(var(--zoom, var(--base-zoom))); transform-origin: 50% 32%;
-      }
-      .hero-layer img { object-position: 50% 42%; }
       .hero-layer--bg { -webkit-mask-image: none; mask-image: none; }
       .hero-scrim {
         background:
@@ -626,7 +622,7 @@
       .hero-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
       .hero-screen { position: absolute; inset: 0; height: auto; min-height: 0; }
       .hero-frame { will-change: clip-path; }
-      .story { position: absolute; inset: 0; z-index: 7; padding: 0; pointer-events: none; }
+      .story { position: sticky; top: 0; height: 100vh; margin-top: -100vh; z-index: 7; padding: 0; pointer-events: none; }
       .story.is-live { pointer-events: auto; }
       .story > .wrap { max-width: none; height: 100%; padding: 0; }
       .story__grid { display: block; position: relative; height: 100%; }
@@ -665,8 +661,8 @@
         will-change: transform;
       }
       .chapter.reveal { opacity: 1; transition: none; }
-      .portal-ring {
-        display: block; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3;
+      .case > .portal-ring {
+        display: block; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 5;
         pointer-events: none; overflow: visible; opacity: 0;
         filter: drop-shadow(0 0 10px rgba(176, 77, 255, .6));
       }
@@ -677,6 +673,42 @@
       .chapter .case__desc { font-size: 17.5px; }
       .chapter .case__art { justify-self: center; will-change: transform; }
       .chapter .case__art svg { max-height: calc(100vh - 72px - 18vh); width: auto; max-width: 100%; margin: 0 auto; }
+    }
+    /* ---------- Phones & tablets (JS uses the same query) ----------
+       Hero: the photo shrinks into a card, then the story slides up over it.
+       Work: the title holds, an octagon opens from its dot into the first project,
+       then each project slides up over the last. Tall panels scroll fully into view
+       first, then stick by their bottom edge while the next one covers them. */
+    @media (max-width: 1199.98px) and (min-height: 560px) and (prefers-reduced-motion: no-preference) {
+      .hero-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; z-index: 0; }
+      .hero-screen { height: 100%; min-height: 0; will-change: transform; }
+      .story {
+        position: relative; z-index: 2; margin-top: 35vh; margin-top: 35svh; overflow: hidden;
+        background: var(--bg); border-radius: 28px 28px 0 0;
+        box-shadow: 0 -30px 60px -24px rgba(0, 0, 0, .55);
+        transition: background-color .4s ease;
+      }
+      .story__then, .story__now { will-change: transform, opacity; }
+
+      .work-veil {
+        position: sticky; top: 0; z-index: 0; height: 100vh; height: 100svh;
+        display: flex; align-items: center; padding-top: 72px; background: var(--bg);
+      }
+      .work-veil > .wrap { width: 100%; }
+      .work-title { will-change: transform; }
+      .chapters {
+        position: relative; z-index: 1; display: block; max-width: none; padding: 0;
+        margin-top: -100vh; margin-top: -100svh;
+      }
+      .chapter { position: sticky; border-radius: 28px 28px 0 0; padding-top: 88px; will-change: transform; }
+      .chapter:first-child { border-radius: 0; clip-path: polygon(0 0, 0 0, 0 0); }
+      .chapter.reveal { opacity: 1; transform: none; transition: none; }
+      .chapter.case--feature::before { display: none; }
+      .case > .portal-ring {
+        display: block; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 5;
+        pointer-events: none; overflow: visible; opacity: 0;
+        filter: drop-shadow(0 0 8px rgba(176, 77, 255, .6));
+      }
     }
   </style>
 </head>
@@ -743,6 +775,7 @@
             <img src="assets/abhiman-subject.webp" alt="" width="1024" height="1536" fetchpriority="high">
           </div>
           <div class="hero-scrim" id="heroScrim"></div>
+          <div class="hero-shade" id="heroShade"></div>
         </div>
         <div class="hero-edge" id="heroEdge" aria-hidden="true"></div>
       <div class="hero__bottom" id="heroBottom">
@@ -766,8 +799,9 @@
         </div>
       </div>
       </div>
+     </div>
 
-      <!-- Story: slides in beside the card on wide screens, flows below the photo elsewhere -->
+      <!-- Story: slides in beside the card on wide screens; on phones it slides up over the card -->
       <div class="story" id="about">
         <div class="wrap">
           <div class="story__grid">
@@ -782,7 +816,6 @@
           </div>
         </div>
       </div>
-     </div>
     </section>
 
     <!-- ===== Statement ===== -->
@@ -882,6 +915,15 @@
                 <text x="400" y="302" text-anchor="end" font-family="Geist Mono, monospace" font-size="11" fill="rgba(255,255,255,.45)">schema ✓</text>
               </svg>
             </div>
+        <svg class="portal-ring" aria-hidden="true">
+          <defs>
+            <linearGradient id="portalGrad" x1="0" x2="1">
+              <stop offset="0" stop-color="#4d6bff"/><stop offset=".4" stop-color="#b04dff"/>
+              <stop offset=".6" stop-color="#ff9a1f"/><stop offset="1" stop-color="#ffb52e"/>
+            </linearGradient>
+          </defs>
+          <polygon id="portalPoly" points="0,0" fill="none" stroke="url(#portalGrad)" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
           </article>
 
           <!-- 2. Collision -->
@@ -1055,15 +1097,6 @@
               </div>
             </article>
       </div>
-      <svg class="portal-ring" aria-hidden="true">
-        <defs>
-          <linearGradient id="portalGrad" x1="0" x2="1">
-            <stop offset="0" stop-color="#4d6bff"/><stop offset=".4" stop-color="#b04dff"/>
-            <stop offset=".6" stop-color="#ff9a1f"/><stop offset="1" stop-color="#ffb52e"/>
-          </linearGradient>
-        </defs>
-        <polygon id="portalPoly" points="0,0" fill="none" stroke="url(#portalGrad)" stroke-width="3" stroke-linejoin="round"/>
-      </svg>
      </div>
     </section>
 
@@ -1419,7 +1452,10 @@
       var storyEl = document.getElementById('about');
       var storyThen = document.getElementById('storyThen');
       var storyNow = document.getElementById('storyNow');
+      var heroShade = document.getElementById('heroShade');
       var pinQuery = window.matchMedia('(min-width: 1200px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)');
+      // Phones and tablets get their own version of the sequences (same query as the CSS block).
+      var compactQuery = window.matchMedia('(max-width: 1199.98px) and (min-height: 560px) and (prefers-reduced-motion: no-preference)');
       var reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
       var HOLD = 0.82; // the last 18% of the pinned scroll holds the finished layout
 
@@ -1434,41 +1470,54 @@
         return { w: w, h: h, top: 72 + (vh - 72 - h) / 2, left: (vw - w) / 2 };
       }
 
+      // Phones: a portrait card in the upper half, leaving room for the story to rise beneath it.
+      function compactCardRect(vw, vh) {
+        var h = Math.min(vh * 0.52, (vw - 48) / 0.8);
+        var w = h * 0.8;
+        return { w: w, h: h, top: 84, left: (vw - w) / 2 };
+      }
+
+      function insetFrame(c, vw, vh, f, radius) {
+        var T = c.top * f, L = c.left * f, R = (vw - c.left - c.w) * f, B = (vh - c.top - c.h) * f, rad = radius * f;
+        frame.style.clipPath = 'inset(' + T + 'px ' + R + 'px ' + B + 'px ' + L + 'px round ' + rad + 'px)';
+        edge.style.top = T + 'px'; edge.style.right = R + 'px'; edge.style.bottom = B + 'px'; edge.style.left = L + 'px';
+        edge.style.borderRadius = rad + 'px';
+      }
+
       function clearHero() {
-        [frame, edge, scrim, heroBottom, nameA, nameB, storyThen, storyNow].forEach(function (el) { el.removeAttribute('style'); });
+        [frame, edge, scrim, heroShade, heroBottom, nameA, nameB, storyThen, storyNow, screenEl].forEach(function (el) { el.removeAttribute('style'); });
         stage.style.removeProperty('--zoom');
-        stage.style.removeProperty('--cw');
+        stage.style.removeProperty('--zo-y');
+        heroPin.style.removeProperty('--cw');
         storyEl.classList.remove('is-live');
       }
 
       function renderHero() {
         var y = window.scrollY;
+        var vh, vw, f, fade, d;
         if (pinQuery.matches) {
-          var vh = window.innerHeight;
-          var vw = stage.clientWidth;
+          vh = window.innerHeight;
+          vw = stage.clientWidth;
           var total = heroPin.offsetHeight - vh;
           var a = clamp01(clamp01((y - heroPin.offsetTop) / total) / HOLD);
 
-          // 1. Frame shrinks from full screen into the card; photo zooms in a little.
-          var f = ease(clamp01(a / 0.8));
+          // 1. Frame shrinks from full screen into the card; photo eases back to the card framing.
+          f = ease(clamp01(a / 0.8));
           var c = cardRect(vw, vh);
-          var T = c.top * f, L = c.left * f, R = (vw - c.left - c.w) * f, B = (vh - c.top - c.h) * f, rad = 28 * f;
-          frame.style.clipPath = 'inset(' + T + 'px ' + R + 'px ' + B + 'px ' + L + 'px round ' + rad + 'px)';
-          edge.style.top = T + 'px'; edge.style.right = R + 'px'; edge.style.bottom = B + 'px'; edge.style.left = L + 'px';
-          edge.style.borderRadius = rad + 'px';
+          insetFrame(c, vw, vh, f, 28);
           edge.style.opacity = clamp01((a - 0.35) / 0.35);
-          stage.style.setProperty('--cw', c.w + 'px');
+          heroPin.style.setProperty('--cw', c.w + 'px');
           stage.style.setProperty('--zoom', (baseZoom() + (1.08 - baseZoom()) * f).toFixed(4));
           scrim.style.opacity = 1 - 0.75 * f;
 
           // 2. Intro copy lifts away first.
-          var fade = clamp01(a / 0.22);
+          fade = clamp01(a / 0.22);
           heroBottom.style.opacity = 1 - fade;
           heroBottom.style.transform = 'translateY(' + (-30 * fade) + 'px)';
           heroBottom.style.visibility = fade >= 1 ? 'hidden' : '';
 
           // 3. The name splits apart behind him and fades.
-          var d = ease(clamp01(a / 0.7));
+          d = ease(clamp01(a / 0.7));
           nameA.style.transform = 'translateX(' + (-d * vw * 0.2) + 'px)';
           nameB.style.transform = 'translateX(' + (d * vw * 0.2) + 'px)';
           nameA.style.opacity = nameB.style.opacity = 1 - clamp01((a - 0.12) / 0.5);
@@ -1482,8 +1531,47 @@
           storyEl.classList.toggle('is-live', s > 0.5);
 
           nav.classList.toggle('is-scrolled', y > 30);
+        } else if (compactQuery.matches) {
+          vh = stage.clientHeight;
+          vw = stage.clientWidth;
+          var yy = y - heroPin.offsetTop;
+
+          // 1. Photo shrinks into a card in the upper half; the whole photo zooms down into it.
+          var sp = clamp01(yy / (0.45 * vh));
+          f = ease(sp);
+          var cc = compactCardRect(vw, vh);
+          insetFrame(cc, vw, vh, f, 24);
+          edge.style.opacity = clamp01((sp - 0.35) / 0.4);
+          var zEnd = Math.max(cc.h / vh, cc.w / (vh * 2 / 3)) * 1.03;
+          stage.style.setProperty('--zo-y', ((cc.top + cc.h / 2) / vh * 100).toFixed(2) + '%');
+          stage.style.setProperty('--zoom', (baseZoom() + (zEnd - baseZoom()) * f).toFixed(4));
+          scrim.style.opacity = 1 - 0.75 * f;
+
+          // 2. Intro copy lifts away; the name splits apart behind him.
+          fade = clamp01(sp / 0.35);
+          heroBottom.style.opacity = 1 - fade;
+          heroBottom.style.transform = 'translateY(' + (-24 * fade) + 'px)';
+          heroBottom.style.visibility = fade >= 1 ? 'hidden' : '';
+          d = ease(clamp01(sp / 0.8));
+          nameA.style.transform = 'translateX(' + (-d * vw * 0.55) + 'px)';
+          nameB.style.transform = 'translateX(' + (d * vw * 0.55) + 'px)';
+          nameA.style.opacity = nameB.style.opacity = 1 - clamp01((sp - 0.1) / 0.55);
+
+          // 3. The story slides up over the card, which sinks back and dims.
+          var st = storyEl.getBoundingClientRect().top;
+          var cover = clamp01((cc.top + cc.h - st) / cc.h);
+          screenEl.style.transformOrigin = '50% ' + (cc.top + cc.h / 2) + 'px';
+          screenEl.style.transform = 'scale(' + (1 - 0.06 * cover).toFixed(4) + ')';
+          heroShade.style.opacity = (0.5 * cover).toFixed(3);
+          var sIn = ease(clamp01((vh - st) / (0.45 * vh)));
+          storyThen.style.opacity = sIn;
+          storyThen.style.transform = 'translateX(' + (-40 * (1 - sIn)).toFixed(1) + 'px)';
+          storyNow.style.opacity = sIn;
+          storyNow.style.transform = 'translateX(' + (40 * (1 - sIn)).toFixed(1) + 'px)';
+
+          nav.classList.toggle('is-scrolled', yy > 30);
         } else {
-          // Smaller screens: no pin, but keep the depth: name drifts apart behind him as the photo zooms.
+          // Reduced motion or very short screens: no pin; keep a gentle drift unless motion is reduced.
           var sh = screenEl.offsetHeight;
           var m = clamp01(y / (sh * 0.85));
           if (!reducedQuery.matches) {
@@ -1498,8 +1586,10 @@
       }
 
       function onPinChange() { clearHero(); renderHero(); }
-      if (pinQuery.addEventListener) pinQuery.addEventListener('change', onPinChange);
-      else if (pinQuery.addListener) pinQuery.addListener(onPinChange);
+      [pinQuery, compactQuery].forEach(function (q) {
+        if (q.addEventListener) q.addEventListener('change', onPinChange);
+        else if (q.addListener) q.addListener(onPinChange);
+      });
 
       // "About" lands on the finished story layout when the hero is pinned.
       document.querySelectorAll('a[href="#about"]').forEach(function (link) {
@@ -1522,7 +1612,9 @@
       var PORTAL = 1.0;      // screens of scroll for the octagon to fill the screen
       var STEP = 1.0;        // screens of scroll per stacked chapter
       var END_HOLD = 0.35;   // screens of scroll the last chapter holds before the section leaves
-      var dot = null;        // dot centre, measured relative to the stage with the title untransformed
+      var C_HOLD = 0.12;     // phones: screens of scroll the title holds before the portal opens
+      var C_PORTAL = 0.55;   // phones: screens of scroll for the octagon to fill the screen
+      var dot = null;        // dot centre (and, on phones, chapter sizes), measured with the title untransformed
 
       chapters.forEach(function (ch) {
         var shade = document.createElement('div');
@@ -1544,15 +1636,45 @@
         return pts;
       }
 
+      // Clip the first chapter to an octagon of radius r around (cx, cy), in that chapter's own
+      // coordinates, with the neon ring just inside the edge.
+      function setPortal(cx, cy, r, progress) {
+        chapters[0].style.clipPath = progress >= 1 ? 'none'
+          : 'polygon(' + octagonPoints(cx, cy, r).map(function (p) { return p[0] + 'px ' + p[1] + 'px'; }).join(', ') + ')';
+        portalPoly.setAttribute('points', octagonPoints(cx, cy, Math.max(0, r - 1.5)).map(function (p) { return p.join(','); }).join(' '));
+        portalRing.style.opacity = progress > 0 && progress < 1 ? (1 - clamp01((progress - 0.7) / 0.3)).toFixed(3) : '0';
+      }
+
       function measureWork() {
-        if (!workQuery.matches) { dot = null; return; }
-        workSeq.style.height = ((VEIL_HOLD + PORTAL + (chapters.length - 1) * STEP + END_HOLD + 1) * 100) + 'vh';
+        if (workQuery.matches) {
+          workSeq.style.height = ((VEIL_HOLD + PORTAL + (chapters.length - 1) * STEP + END_HOLD + 1) * 100) + 'vh';
+        }
         workTitle.style.transform = 'none';
-        var s = workStage.getBoundingClientRect();
+        var ref = (workQuery.matches ? workStage : workVeil).getBoundingClientRect();
         var d = workDot.getBoundingClientRect();
         var t = workTitle.getBoundingClientRect();
-        dot = { x: d.left + d.width / 2 - s.left, y: d.top + d.height / 2 - s.top };
+        dot = {
+          mode: workQuery.matches ? 'desktop' : 'compact',
+          x: d.left + d.width / 2 - ref.left,
+          y: d.top + d.height / 2 - ref.top
+        };
         workTitle.style.transformOrigin = (d.left + d.width / 2 - t.left) + 'px ' + (d.top + d.height / 2 - t.top) + 'px';
+        if (dot.mode === 'compact') {
+          // The first panel is held still while the portal opens (translated down by the distance
+          // scrolled); extra bottom padding of the same size keeps its content ending where the
+          // next panel begins.
+          var vhm = window.innerHeight;
+          dot.hold = (C_HOLD + C_PORTAL) * vhm;
+          chapters[0].style.paddingBottom = 'calc(clamp(28px, 4.5vw, 64px) + ' + dot.hold + 'px)';
+          // Tall panels stick by their bottom edge, so each one is fully read before the next covers it.
+          var vh = vhm, flow = 0;
+          chapters.forEach(function (ch) {
+            var h = ch.offsetHeight;
+            ch._flow = flow; flow += h;
+            ch.style.top = (vh - h) + 'px';
+            ch.style.transformOrigin = '50% ' + (h > vh ? h - vh / 2 : h / 2) + 'px';
+          });
+        }
       }
 
       function clearWork() {
@@ -1565,23 +1687,27 @@
       }
 
       function renderWork() {
-        if (!workQuery.matches) return;
-        if (!dot) measureWork();
+        if (workQuery.matches) {
+          if (!dot || dot.mode !== 'desktop') measureWork();
+          renderWorkDesktop();
+        } else if (compactQuery.matches) {
+          if (!dot || dot.mode !== 'compact') measureWork();
+          renderWorkCompact();
+        }
+      }
+
+      function renderWorkDesktop() {
         var vh = window.innerHeight;
         var vw = workStage.clientWidth;
         var u = (window.scrollY - workSeq.offsetTop) / vh;
 
         // Portal: an octagon opens from the dot after "production" and grows past the corners.
+        // The first chapter fills the pinned stage, so stage and chapter coordinates match.
         var r = ease(clamp01((u - VEIL_HOLD) / PORTAL));
         var far = Math.hypot(Math.max(dot.x, vw - dot.x), Math.max(dot.y, vh - dot.y)) / Math.cos(Math.PI / 8) + 4;
         workTitle.style.transform = 'scale(' + (1 + 0.35 * r).toFixed(4) + ')';
         workVeil.style.visibility = r >= 1 ? 'hidden' : '';
-        var pts = octagonPoints(dot.x, dot.y, far * r);
-        chapters[0].style.clipPath = r >= 1 ? 'none'
-          : 'polygon(' + pts.map(function (p) { return p[0] + 'px ' + p[1] + 'px'; }).join(', ') + ')';
-        // Neon outline rides the edge of the opening, like the octagon in the photo.
-        portalPoly.setAttribute('points', pts.map(function (p) { return p.join(','); }).join(' '));
-        portalRing.style.opacity = r > 0 && r < 1 ? (1 - clamp01((r - 0.7) / 0.3)).toFixed(3) : '0';
+        setPortal(dot.x, dot.y, far * r, r);
 
         // Stack: each chapter slides up; the one beneath sinks back and dims.
         chapters.forEach(function (ch, i) {
@@ -1599,20 +1725,65 @@
         });
       }
 
+      function renderWorkCompact() {
+        var vh = window.innerHeight;
+        var vw = document.documentElement.clientWidth;
+        // Read every position first, then write, so the page lays out once per frame.
+        var veil = workVeil.getBoundingClientRect();
+        var tops = chapters.map(function (ch) { return ch.getBoundingClientRect(); });
+        var passed = -workStage.getBoundingClientRect().top;
+
+        // Portal: the title holds (sticky) while the first chapter scrolls up beneath an octagon
+        // that opens from the dot; the chapter's tall top padding keeps its content out of view
+        // until the opening has filled the screen.
+        var r = ease(clamp01((passed - C_HOLD * vh) / (C_PORTAL * vh)));
+        var held = Math.max(0, Math.min(passed, dot.hold));
+        var dvx = veil.left + dot.x, dvy = veil.top + dot.y;
+        var far = Math.hypot(Math.max(dvx, vw - dvx), Math.max(dvy, vh - dvy)) / Math.cos(Math.PI / 8) + 4;
+        workTitle.style.transform = 'scale(' + (1 + 0.35 * r).toFixed(4) + ')';
+        // The first panel starts at the section's top (it overlaps the sticky title), so its
+        // on-screen top is the section's top plus the hold offset.
+        setPortal(dvx - tops[0].left, dvy - (held - passed), far * r, r);
+
+        // Stack: as the next panel rises, the current one sinks back and dims.
+        chapters.forEach(function (ch, i) {
+          var t = i + 1 < chapters.length ? clamp01((vh - tops[i + 1].top) / vh) : 0;
+          // Once the next panel fully covers this one, hide it: nothing to see, and the first
+          // panel's hold offset would otherwise spill past the end of the section.
+          ch.style.visibility = i + 1 < chapters.length && tops[i + 1].top <= 0 ? 'hidden' : '';
+          ch.style.transform = (i === 0 ? 'translateY(' + held.toFixed(1) + 'px) ' : '') + 'scale(' + (1 - 0.06 * t).toFixed(4) + ')';
+          ch._shade.style.opacity = (0.5 * t).toFixed(3);
+          if (ch._art) {
+            var e = i === 0 ? r : ease(clamp01((vh - tops[i].top) / (0.7 * vh)));
+            ch._art.style.transform = 'translateY(' + (40 * (1 - e)).toFixed(1) + 'px) rotate(' + (-4 * (1 - e)).toFixed(2) + 'deg)';
+          }
+        });
+      }
+
       function onWorkChange() { clearWork(); dot = null; renderWork(); }
-      if (workQuery.addEventListener) workQuery.addEventListener('change', onWorkChange);
-      else if (workQuery.addListener) workQuery.addListener(onWorkChange);
+      [workQuery, compactQuery].forEach(function (q) {
+        if (q.addEventListener) q.addEventListener('change', onWorkChange);
+        else if (q.addListener) q.addListener(onWorkChange);
+      });
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { dot = null; renderWork(); });
 
-      // "Shipped in" links to a project chapter: when the work section is pinned, scroll to the
-      // point in the sequence where that chapter is fully in view.
+      // "Shipped in" links to a project chapter: scroll to the point in the sequence where that
+      // chapter is fully in view (the panels are sticky, so a plain anchor jump lands in the wrong place).
       document.querySelectorAll('a[href^="#case-"]').forEach(function (link) {
         link.addEventListener('click', function (e) {
-          if (!workQuery.matches) return;
           var i = chapters.indexOf(document.querySelector(link.getAttribute('href')));
           if (i < 0) return;
+          var vh = window.innerHeight, top;
+          if (workQuery.matches) {
+            top = workSeq.offsetTop + (VEIL_HOLD + PORTAL + i * STEP) * vh;
+          } else if (compactQuery.matches) {
+            if (!dot || dot.mode !== 'compact') measureWork();
+            top = workSeq.offsetTop + (i === 0 ? dot.hold : chapters[i]._flow);
+          } else {
+            return;
+          }
           e.preventDefault();
-          window.scrollTo({ top: workSeq.offsetTop + (VEIL_HOLD + PORTAL + i * STEP) * window.innerHeight, behavior: 'smooth' });
+          window.scrollTo({ top: top, behavior: 'smooth' });
         });
       });
 
